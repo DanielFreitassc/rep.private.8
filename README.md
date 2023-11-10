@@ -4,5 +4,17 @@
 
 ## Exemplo em codigo do uso de classe pai e filha.
 ```
-script
+pessoa(){
+String nome;
+String sobrenome;
+void PessoaFisica(){
+cpf
+};
+void PessoaJurica(){
+cnpj
+};
+
+
+};
+
 ``` 
