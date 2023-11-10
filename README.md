@@ -34,4 +34,4 @@ print(meu_cachorro.fazer_som())
 print(meu_cachorro.abanar_rabo())
 
 ``` 
-As vantagens de usar herança é a facil manutenção do codigo por conta da legibilidade do codigo, menor quantidade de linha de codigo a ser escrita assim criando um codigo limpo que segue as boas praticas da programação
+## As vantagens de usar herança é a facil manutenção do codigo por conta da legibilidade do codigo, menor quantidade de linha de codigo a ser escrita assim criando um codigo limpo que segue as boas praticas da programação
