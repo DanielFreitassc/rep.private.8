@@ -20,17 +20,20 @@ class Cachorro(Animal):
         self.raca = raca
 
     def fazer_som(self):
-        return "Au au!"
+        return f"{self.nome}: Au au!"
 
     def abanar_rabo(self):
         return f"{self.nome} está abanando o rabo."
 
-meu_cachorro = Cachorro(nome="Buddy", idade=3, raca="Golden Retriever")
+meu_cachorro = Cachorro(nome="Belinha", idade=3, raca="Viralata")
+meu_segundoCachorro = Cachorro(nome="Bob", idade=2, raca="Caramelo")
 
+print(meu_segundoCachorro.info())
 print(meu_cachorro.info())
-
 print(meu_cachorro.fazer_som())
+print(meu_segundoCachorro.fazer_som())
 print(meu_cachorro.abanar_rabo())
+print(meu_segundoCachorro.abanar_rabo())
 
 ``` 
 ## As vantagens de usar herança é a facil manutenção do codigo por conta da legibilidade do codigo, menor quantidade de linha de codigo a ser escrita assim criando um codigo limpo que segue as boas praticas da programação
