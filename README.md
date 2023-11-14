@@ -37,3 +37,6 @@ print(meu_segundoCachorro.abanar_rabo())
 
 ``` 
 ## As vantagens de usar herança é a facil manutenção do codigo por conta da legibilidade do codigo, menor quantidade de linha de codigo a ser escrita assim criando um codigo limpo que segue as boas praticas da programação
+
+
+# para começarmos entender oque é herança vamos do começo entender oque é classe no python nada mais é que um molde, esse molde tem atribuídospara começarmos entender oque é herança vamos do começo entender oque é classe no python nada mais é que um molde, esse molde tem atribuídos e métodos e métodos (comportamentos)
