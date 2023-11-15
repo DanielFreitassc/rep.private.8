@@ -68,3 +68,4 @@ class Aluno(Pessoa):
   def fazerProva(self):
     return f"{self.nome}- Fez uma prova!"
 ```
+![image](https://github.com/DanielFreitassc/aula_heranca/assets/129224303/862c2a8c-ff8f-4fed-930d-bf9080cb0c78)
