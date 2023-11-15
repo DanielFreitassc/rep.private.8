@@ -40,3 +40,31 @@ print(meu_segundoCachorro.abanar_rabo())
 
 
 # para começarmos entender oque é herança vamos do começo entender oque é classe no python. Classe nada mais é que um molde, esse molde tem atribuídos (características) e métodos (comportamentos), agora vamos criar um exemplo para melhor visualização, vamos criar a classe Pessoa....  Que atributos pessoa tem?? nome , idade , altura,  Vamos fazer com esses 3 atributos primeiro  digitamos def que serve apra criar uma função depois  INIT que é o inicializador de um objeto ou costrutor em seguida digitamos self que é  usada para se referir à instância atual de uma classe e é o primeiro parâmetro detodos os métodos de uma classe  self.nome variavel do próprio elemento e nome é o parametro do costrutuor
+
+```
+class Pessoa:
+  def __init__(self,nome,sobrenome):
+    self.nome = nome 
+    self.sobrenome = sobrenome
+
+class Professor(Pessoa):
+  def __init__(self,nome,sobrenome,salario):
+    super().__init__(nome,sobrenome)
+    self.salario = salario
+
+  def informacao(self):
+    return f"Nome:{self.nome}, Sobrenome:{self.sobrenome} , Sálario:{self.salario}R$"
+
+  def aplicarProva(self):
+    return f"{self.nome}- Aplicou uma prova!"
+
+class Aluno(Pessoa):
+  def __init__(self,nome,sobrenome,matricula):
+    super().__init__(nome,sobrenome)
+    self.matricula = matricula
+  def info(self):
+    return f"Nome:{self.nome}, Sobrenome:{self.sobrenome} , Matricula:{self.matricula}"
+
+  def fazerProva(self):
+    return f"{self.nome}- Fez uma prova!"
+```
