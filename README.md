@@ -69,3 +69,8 @@ class Aluno(Pessoa):
     return f"{self.nome}- Fez uma prova!"
 ```
 ![image](https://github.com/DanielFreitassc/aula_heranca/assets/129224303/862c2a8c-ff8f-4fed-930d-bf9080cb0c78)
+
+
+```
+O tema  do grupo 5 foi Algoritimos de recursividade eles utilizaram o python para explicar 
+```
