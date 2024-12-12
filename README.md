@@ -161,3 +161,23 @@ sudo systemctl daemon-reload
 sudo systemctl enable zabbix-server
 sudo systemctl restart zabbix-server zabbix-agent2 apache2
 ```
+#09_ Verificando o Serviço e Versão do Zabbix Server e Agent2
+```
+#verificando o serviço do Zabbix Server e Agent2
+sudo systemctl status zabbix-server zabbix-agent2
+sudo systemctl restart zabbix-server zabbix-agent2
+sudo systemctl stop zabbix-server zabbix-agent2
+sudo systemctl start zabbix-server zabbix-agent2
+
+#analisando os Log's e mensagens de erro do Servidor do Zabbix (NÃO COMENTADO NO VÍDEO)
+#opção do comando journalctl: -t (identifier), -x (catalog), -e (pager-end), -u (unit)
+sudo journalctl -xeu zabbix-server
+sudo journalctl -t zabbix_agent2
+sudo journalctl -xeu zabbix-agent2
+
+#verificando a versão do Zabbix Server e Agent2
+#opção do comando zabbix_server: -V (version)
+#opção do comando zabbix_agentd: -V (version)
+sudo zabbix_server -V
+sudo zabbix_agent2 -V
+``` 
