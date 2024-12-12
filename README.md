@@ -78,3 +78,86 @@ sudo zcat /usr/share/zabbix/sql-scripts/mysql/server.sql.gz | sudo mysql --defau
 
 #opções do comando mysql: -u (user), -p (password)
 sudo mysql -u zabbix -p
+
+```
+/* Listando os Bancos de Dados do MySQL */
+SHOW DATABASES;
+
+/* Acessando o Banco de Dados Zabbix */
+USE zabbix;
+
+/* Verificando as Tabelas criadas pelo Script */
+SHOW TABLES;
+
+/* Verificando os Usuários criados pelo Script */
+SELECT username,passwd FROM users;
+
+/* Saindo do Banco de Dados */
+exit
+```
+
+```
+#Desabilitando a opção de Criação de Função no MySQL Server
+
+#opções do comando mysql: -u (user), -p (password)
+sudo mysql -u root -p
+
+/* Desabilitando a opção de Criação de Função log_bin_trust_function_creators no MySQL Server */
+SET GLOBAL log_bin_trust_function_creators = 0;
+
+/* Saindo do Banco de Dados */
+exit
+```
+#07_ Editando os arquivos de Configuração do Zabbix Server e Agent
+
+```
+#editando o arquivo de configuração do Zabbix Server
+sudo vim /etc/zabbix/zabbix_server.conf
+
+#entrando no modo de edição do editor de texto VIM
+INSERT
+
+  #descomentar e alterar o valor da variável DBHost= na linha: 91
+  DBHost=localhost
+
+  #deixar o padrão da variável DBName= na linha: 100
+  DBName=zabbix
+
+  #deixar o padrão da variável DBUser= na linha: 116
+  DBUser=zabbix
+
+  #descomentar e alterar o valor da variável DBPassword= na linha: 124
+  DBPassword=zabbix
+
+#salvar e sair do arquivo
+ESC SHIFT : x <Enter>
+
+#editando o arquivo de configuração do Zabbix Agent2
+sudo vim /etc/zabbix/zabbix_agent2.conf
+
+#entrando no modo de edição do editor de texto VIM
+INSERT
+
+  #alterar o valor da variável Server= na linha: 80
+  Server=172.16.1.20
+
+  #alterar o valor da variável ServerActive= na linha: 133
+  ServerActive=172.16.1.20
+
+  #alterar o valor da variável Hostname= na linha: 144
+  Hostname=wsvaamonde
+
+  #descomentar o valor da variável RefreshActiveChecks= na linha 204
+  RefreshActiveChecks=5s
+
+#salvar e sair do arquivo
+ESC SHIFT : x <Enter>
+```
+
+#08_ Habilitando o Serviço do Zabbix Server e Agent2
+```
+#habilitando o serviço do Zabbix Server e Agent2
+sudo systemctl daemon-reload
+sudo systemctl enable zabbix-server
+sudo systemctl restart zabbix-server zabbix-agent2 apache2
+```
