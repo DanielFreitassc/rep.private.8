@@ -8,13 +8,26 @@ sudo systemctl start mysql
 sudo mysql
 
 ```
+/* Criando o Banco de Dados Zabbix Server */
 CREATE DATABASE zabbix CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'sua_senha_forte';
-
+/* Criando o Usuário Zabbix com a Senha Zabbix do Banco de Dados Zabbix */
+CREATE USER 'zabbix'@'localhost' IDENTIFIED WITH mysql_native_password BY 'zabbix';
+GRANT USAGE ON *.* TO 'zabbix'@'localhost';
 GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';
-
 FLUSH PRIVILEGES;
+
+/* Habilitando a opção de Criação de Função log_bin_trust_function_creators no MySQL Server */
+SET GLOBAL log_bin_trust_function_creators = 1;
+
+/* Listando os Bancos de Dados do MySQL */
+SHOW DATABASES;
+
+/* Verificando o Usuário Zabbix criado no Banco de Dados MySQL Server */
+SELECT user,host FROM mysql.user WHERE user='zabbix';
+
+/* Saindo do Banco de Dados */
+exit
 ```
 EXIT
 
@@ -41,3 +54,27 @@ zabbix-sql-scripts zabbix-agent2 zabbix-agent2-plugin-*
 
 #opções do comando mysql: -u (user), -p (password)
 sudo mysql -u root -p
+
+#opções do comando mysql: -u (user), -p (password)
+sudo mysql -u zabbix -p
+
+/* Listando os Bancos de Dados do MySQL */
+SHOW DATABASES;
+
+/* Acessando o Banco de Dados Zabbix */
+USE zabbix;
+
+/* Saindo do Banco de Dados */
+exit
+
+#OBSERVAÇÃO IMPORTANTE: O PROCEDIMENTO DE CRIAÇÃO E POPULAÇÃO DAS TABELAS DO ZABBIX
+#SERVER, DEPENDENDO DO SEU HARDWARE DEMORA BASTANTE, SÓ AGUARDAR O TÉRMINO.
+
+#importando o esquema e os dados iniciais do banco de dados do Zabbix Server
+#opção do redirecionador | (pipe): Conecta a saída padrão com a entrada padrão de outro comando
+#opções do comando mysql: -u (user), -p (password), zabbix (database)
+sudo zcat /usr/share/zabbix/sql-scripts/mysql/server.sql.gz | sudo mysql --default-character-set=utf8mb4 \
+-uzabbix -pzabbix zabbix
+
+#opções do comando mysql: -u (user), -p (password)
+sudo mysql -u zabbix -p
